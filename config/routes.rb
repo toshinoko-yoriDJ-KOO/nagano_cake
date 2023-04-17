@@ -1,5 +1,38 @@
 Rails.application.routes.draw do
+  root to: 'homes#top'
+  get "/about" =>"homes#about"
+  get "/products" => "customers#index"
+  get "/products/:id" => "customers#show"
+  get "/customers/my_page" => "customers#show"
+  get "/customers/information/edit" => "customers#edit"
+  patch "/customers/information" => "customers#update"
+  get "/customers/quit" => "customers#quit"
+  patch "/customers/out" => "customers#out"
+  get "/cart_items" => "cart_items#index"
+  patch "/cart_items/:id" => "cart_items#update"
+  delete "/cart_items/:id" => "cart_items#destroy"
+  delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+  post "/cart_items" => "cart_items#create"
+  get "/orders/new" => "orders#new"
+  post "/orders/confirm" => "orders#confirm"
+  get "/orders/thanks" => "orders#thanks"
+  post "/orders" => "orders#create"
+  get "/orders" => "orders#index"
+  get "/orders/:id" => "orders#show"
+  get "/admin" => "homes#top"
+  get "/admin/orders/:id" => "orders#show"
+  patch "/admin/orders/:id" => "orders#update"
+  patch "/admin/order_products/:id" => "order_products#update"
   devise_for :admins
   devise_for :customers
+  resources :delivery_addresses, only:[:index, :edit, :create, :update, :destroy]
+  namespace :admin do
+  resources :products, only:[:index, :new, :create, :show, :edit, :update]
+  resources :customers, only:[:index, :show, :edit, :update]
+  resources :types, only:[:index, :create, :edit, :update]
+  end
+
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
