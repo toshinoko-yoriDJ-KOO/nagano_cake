@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'homes/top'
+  get 'homes/about'
   root to: 'homes#top'
   get "/about" =>"homes#about"
   get "/products" => "customers#index"
