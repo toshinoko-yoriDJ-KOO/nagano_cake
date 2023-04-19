@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   get 'homes/about'
   root to: 'homes#top'
   get "/about" =>"homes#about"
-  get "/products" => "customers#index"
-  get "/products/:id" => "customers#show"
+  
+  # ルーティング間違えていました
+  
+  scope module: :customer do
+  get "/products" => "products#index"
+  get "/products/:id" => "products#show"
+  end
   get "/customers/my_page" => "customers#show"
   get "/customers/information/edit" => "customers#edit"
   patch "/customers/information" => "customers#update"
