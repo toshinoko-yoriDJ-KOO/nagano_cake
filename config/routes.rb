@@ -25,8 +25,20 @@ Rails.application.routes.draw do
   get "/admin/orders/:id" => "orders#show"
   patch "/admin/orders/:id" => "orders#update"
   patch "/admin/order_products/:id" => "order_products#update"
-  devise_for :admins
-  devise_for :customers
+
+  # 顧客用
+  # URL /customers/sign_in ...
+  devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "customer/registrations",
+  sessions: 'customer/sessions'
+}
+
+  # 管理者用
+# URL /admin/sign_in ...
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+}
+
   resources :delivery_addresses, only:[:index, :edit, :create, :update, :destroy]
   namespace :admin do
   resources :products, only:[:index, :new, :create, :show, :edit, :update]
