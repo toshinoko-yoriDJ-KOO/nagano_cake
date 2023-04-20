@@ -1,0 +1,16 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+    </div>
+<div class='col-md-8 offset-md-1'>
+<h3>商品一覧</h3>
+<%= @products.each do |product| %>
+  <%= link_to products_path(product.id) do %>
+    <%= image_tag 'no_image', size:"100×100" %>
+  <%= product.name %>
+  ¥<%= product.price %>
+<% end %>
+<% end %>
+</div>
+  </div>
+</div>
