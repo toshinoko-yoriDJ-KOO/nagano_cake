@@ -1,4 +1,53 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'order_products/update'
+  end
+  namespace :admin do
+    get 'orders/show'
+    get 'orders/update'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+  end
+  namespace :admin do
+    get 'types/index'
+    get 'types/create'
+    get 'types/edit'
+    get 'types/update'
+  end
+  namespace :admin do
+    get 'products/index'
+    get 'products/new'
+    get 'products/create'
+    get 'products/show'
+    get 'products/edit'
+    get 'products/update'
+  end
+  namespace :customer do
+    get 'delivery_addresses/index'
+    get 'delivery_addresses/edit'
+    get 'delivery_addresses/create'
+    get 'delivery_addresses/update'
+    get 'delivery_addresses/destroy'
+  end
+  namespace :customer do
+    get 'orders/new'
+    get 'orders/confirm'
+    get 'orders/thanks'
+    get 'orders/create'
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :customer do
+    get 'cart_items/index'
+    get 'cart_items/update'
+    get 'cart_items/destroy'
+    get 'cart_items/destroy_all'
+    get 'cart_items/create'
+  end
   get 'products/top'
   get 'homes/top'
   get 'homes/about'
