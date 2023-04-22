@@ -19,10 +19,18 @@
   <!--計算はモデルにまとめれるらしい-->
     <td><%= cart_item.product.name %></td>
     <td><%= (cart_item.product.price * 1.1).floor %></td>
-    <td><%= f.select :product_amount, *[1..3] %></td>
-    <td><%= (cart_item.product.price * 1.1).floor * params[:product_amount].to_i %></td>
-    <td><%= link_to "削除する", cart_item_path(cart_item), class:"btn-sm btn-danger destroy(cart_items.id)", method: :delete, data: {confirm: "本当に削除しますか?"} %></td>
-    <% @total_amount +=  (cart_item.product.price * 1.1).floor * params[:product_amount].to_i %>
+    <%= form_with model: cart_item do |f| %>
+    <td><%= f.select :product_amount, [1,2,3] %></td>
+        <%= f.submit "更新", class: "btn btn-success" %>
+    <% end %>
+    <td><%= (cart_item.product.price * 1.1).floor * cart_item.product_amount %></td>
+    <td><%= link_to "削除する", cart_item_path(cart_item), class:"btn-sm btn-danger", method: :delete, data: {confirm: "本当に削除しますか?"} %></td>
   </tr>
+  <!--コントローラ適宜まだ-->
+  <!-- @total_amount +=  (cart_item.product.price * 1.1).floor * params[:product_amount].to_i -->
+
   <% end %>
 </table>
+<%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+
+<%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>

@@ -3,11 +3,11 @@
 class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
   def change
     create_table :customers do |t|
-      
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-     
+
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
@@ -33,30 +33,14 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      
-      t.integer :product_amount, null: false
-      t.string :delivary_address_name, null: false
-      t.string :delivary_address_other, null: false
-      t.string :delivary_address_zip_code, null: false
-      t.string :type,  null: false
-      t.string :last_name,  null: false
-      t.string :first_name,  null: false
-      t.string :last_name_kana,  null: false
-      t.string :first_name_kana,  null: false
-      t.string :zip_code,  null: false
-      t.string :address,  null: false
-      t.string :phone_number,  null: false
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :last_name_kana, null: false
+      t.string :first_name_kana, null: false
+      t.string :zip_code, null: false
+      t.string :address, null: false
+      t.string :phone_number, null: false
       t.boolean :is_active, default: true
-      t.integer :total_payment,  null: false
-      t.integer :shipping_cost,  null: false
-      t.integer :payment_method,  null: false
-      t.string :name,  null: false
-      t.string :postal_code,  null: false
-      t.integer :status, null: false
-      t.integer :price, null: false
-      t.integer :amount, null: false
-      t.integer :making_status, null: false
-      
 
       t.timestamps null: false
     end
