@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_20_193418) do
+ActiveRecord::Schema.define(version: 2023_04_21_173510) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,8 +57,13 @@ ActiveRecord::Schema.define(version: 2023_04_20_193418) do
   end
 
   create_table "cart_items", force: :cascade do |t|
+    t.integer "product_amount", null: false
+    t.integer "customer_id", null: false
+    t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_cart_items_on_customer_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -79,7 +84,7 @@ ActiveRecord::Schema.define(version: 2023_04_20_193418) do
     t.string "zip_code", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
-    t.boolean "is_active", null: false
+    t.boolean "is_active", default: true
     t.integer "total_payment", null: false
     t.integer "shipping_cost", null: false
     t.integer "payment_method", null: false
@@ -95,22 +100,66 @@ ActiveRecord::Schema.define(version: 2023_04_20_193418) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "delivary_addresses", force: :cascade do |t|
+    t.string "delivary_address_name", null: false
+    t.string "delivary_address_other", null: false
+    t.string "delivary_address_zip_code", null: false
+    t.integer "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_delivary_addresses_on_customer_id"
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer "price", null: false
+    t.integer "amount", null: false
+    t.integer "making_status", null: false
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "total_payment", null: false
     t.integer "shopping_cost", null: false
-    t.integer "postal_code", null: false
+    t.integer "payment_method", null: false
+    t.string "postal_code", null: false
     t.string "name", null: false
     t.string "address", null: false
     t.integer "status", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true
+    t.integer "type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["type_id"], name: "index_products_on_type_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_items", "customers"
+  add_foreign_key "cart_items", "products"
+  add_foreign_key "delivary_addresses", "customers"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "products", "types"
 end

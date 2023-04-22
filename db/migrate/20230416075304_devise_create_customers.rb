@@ -3,6 +3,7 @@
 class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
   def change
     create_table :customers do |t|
+      
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -45,7 +46,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :zip_code,  null: false
       t.string :address,  null: false
       t.string :phone_number,  null: false
-      t.boolean :is_active,  null: false
+      t.boolean :is_active, default: true
       t.integer :total_payment,  null: false
       t.integer :shipping_cost,  null: false
       t.integer :payment_method,  null: false
