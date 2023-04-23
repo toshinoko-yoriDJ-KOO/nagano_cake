@@ -1,2 +1,48 @@
-<h1>Admin::Types#index</h1>
-<p>Find me in app/views/admin/types/index.html.erb</p>
+<!--しんちゃん作成-->
+<!--my-5=上下のマージンを3rem-->
+<div class="container my-5">
+  <h3><strong>ジャンル一覧・追加</strong></h3>
+  <!--mt-4=上下のマージンを1.5rem-->
+  <div class="row mt-4 mb-2">
+    <%= form_with model: @type,url:admin_types_path,method: :post,class:"type_form" do |f| %>
+    <table>
+      <tbody>
+        <tr>
+          <td>ジャンル名</td>
+          <td></td>
+          <td>
+            <!--テキストボックス作成 プロパティ名=:name placeholderで例文指定-->
+            <%= f.text_field:name,placeholder:"ジャンル名" %>
+          </td>
+          <td>
+           <div class="col-sm-8 offset-sm-2">
+            <%= f.submit "新規登録",class:"btn btn-success" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <table class="table col-5">
+      <thead>
+        <tr class="table-active">
+          <th></th>
+          <th>ジャンル</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @types.each do |type| %>
+          <tr>
+            <td><%= type.name %></td>
+            <td colspan="3"></td>
+            <!--ジャンル編集画面へ遷移-->
+            <td><%= link_to "編集する",edit_admin_type_path(type.id),class:'btn btn-success' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

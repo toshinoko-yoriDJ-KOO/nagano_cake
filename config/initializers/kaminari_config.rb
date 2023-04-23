@@ -11,4 +11,8 @@ Kaminari.configure do |config|
   # config.param_name = :page
   # config.max_pages = nil
   # config.params_on_first_page = false
+  
+  # しんちゃん作成
+  # 1ページあたり6件を表示
+  config.default_per_page = 6
 end
