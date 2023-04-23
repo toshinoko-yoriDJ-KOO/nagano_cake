@@ -40,27 +40,26 @@
 
       <h2>新着商品</h2>
       <div class="row">
-        <%  if @oriducts.present? %>
-        <% @products.each do |product| %>
-          <div class="col-md-3">
-            <table>
-              <tr>
-                <td><%= image_tag product.get_image(50,50) %></td>
-              </tr>
-              <tr>
-                <td><%= product.name %></td>
-              </tr>
-              <tr>
-                <td><%= product.price %></td>
-              </tr>
-            </table>
-          </div>
-        <% end %>
-        <%  else %>
+        <% if @products.present? %>
+          <% @products.each do |product| %>
+            <div class="col-md-3">
+              <table>
+                <tr>
+                  <td><%= image_tag product.get_image(50,50) %></td>
+                </tr>
+                <tr>
+                  <td><%= product.name %></td>
+                </tr>
+                <tr>
+                  <td><%= product.price %></td>
+                </tr>
+              </table>
+            </div>
+          <% end %>
+        <% else %>
           <p>商品がありません</p>
         <% end %>
       </div>
-
       <%= link_to "すべての商品を見る＞",  products_path %>
 
     </div>
