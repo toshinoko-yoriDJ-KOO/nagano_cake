@@ -24,15 +24,15 @@ class Admin::ProductsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     # テーブルからレコードを1行取得。引数はid
-    @Product = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def edit
     # テーブルからレコードを1行取得。引数はid
-    @Product = Product.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
 
