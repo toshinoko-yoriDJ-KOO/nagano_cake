@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2023_04_22_074811) do
-=======
-ActiveRecord::Schema.define(version: 2023_04_21_173510) do
->>>>>>> origin/develop
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -111,7 +107,7 @@ ActiveRecord::Schema.define(version: 2023_04_21_173510) do
   create_table "orders", force: :cascade do |t|
     t.integer "total_payment", null: false
     t.integer "shopping_cost", null: false
-    t.integer "payment_method", null: false
+    t.integer "payment_method", default: 0, null: false
     t.string "postal_code", null: false
     t.string "name", null: false
     t.string "address", null: false
@@ -123,19 +119,6 @@ ActiveRecord::Schema.define(version: 2023_04_21_173510) do
   end
 
   create_table "products", force: :cascade do |t|
-<<<<<<< HEAD
-    t.integer "type_id", null: false
-    t.string "name", null: false
-    t.text "description", null: false
-    t.integer "price", null: false
-    t.boolean "is_active", default: true, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string "name"
-=======
     t.string "name", null: false
     t.text "description", null: false
     t.integer "price", null: false
@@ -147,8 +130,7 @@ ActiveRecord::Schema.define(version: 2023_04_21_173510) do
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "type", null: false
->>>>>>> origin/develop
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -5,16 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-<<<<<<< HEAD
 
 # しんちゃん作成
 # 管理者側にはsign_upがないのでログイン時の初期値を設定
 Admin.create!(
   email: "test@naganocake.com",
   password: "test1111"
-=======
-Admin.create!(
-  email: 'test@naganocake.com',
-  password: 'test1111'
->>>>>>> origin/develop
 )
