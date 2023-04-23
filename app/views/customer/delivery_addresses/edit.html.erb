@@ -1,2 +1,13 @@
-<h1>Customer::DeliveryAddresses#edit</h1>
-<p>Find me in app/views/customer/delivery_addresses/edit.html.erb</p>
+<!--ごう作-->
+
+<h3>配送先編集</h3>
+
+<%= form_with model: @delivery_address do |f| %>
+  <div>郵便番号(ハイフンなし)</div>
+  <%= f.text_field :zip_code, placeholder: "000000", autocomplete: "zip_code" %>
+  <div>住所</div>
+  <%= f.text_field :address, placeholder: "TOKYO", autocomplete: "address" %>
+  <div>宛名</div>
+  <%= f.text_field :name, placeholder: "DJ KOO", autocomplete: "name" %>
+  <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+<% end %>

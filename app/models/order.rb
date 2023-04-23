@@ -12,4 +12,9 @@ def subtotal
     product.with_tax_price * amount
 end
 
+# ごう作：注文情報入力画面の登録済住所のセレクトボックスへ適応
+def address_display
+  '〒' + postal_code + ' ' + address + ' ' + name
+end
+
 end
