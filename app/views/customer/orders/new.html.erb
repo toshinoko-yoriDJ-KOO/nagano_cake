@@ -1,3 +1,21 @@
+<<<<<<< HEAD
 <h1>Customer::Orders#new</h1>
 <p>Find me in app/views/customer/orders/new.html.erb</p>
 <%= link_to "確認画面へ", orders_confirm_path, method: :post %>
+=======
+<!--ごう作-->
+
+<h3>注文情報入力</h3>
+
+<%= form_with model: @order do |f| %>
+<div class="form-group">
+    <%= f.label :payment_method, "支払方法" %><br>
+    <%= f.radio_button :payment_method, "credit_card" %>
+    <%= f.label :payment_method_credit_card, "クレジットカード" %><br>
+
+    <%= f.radio_button :payment_method, "transfer" %>
+    <%= f.label :payment_method_transfer, "銀行振込" %><br>
+<% end %>
+
+<%= link_to "確認画面へ進む", orders_confirm_path, method: :post, class: "btn btn-primary" %>
+>>>>>>> origin/develop

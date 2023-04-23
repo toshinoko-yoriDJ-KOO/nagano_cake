@@ -1,0 +1,9 @@
+<%= form_with model: @delivery_address do |f| %>
+  <div>郵便番号(ハイフンなし)</div>
+  <%= f.text_field :zip_code, placeholder: "000000", autocomplete: "zip_code" %>
+  <div>住所</div>
+  <%= f.text_field :address, placeholder: "TOKYO", autocomplete: "address" %>
+  <div>宛名</div>
+  <%= f.text_field :name, placeholder: "DJ KOO", autocomplete: "name" %>
+  <%= f.submit "新規登録", class: "btn btn-success" %>
+<% end %>
