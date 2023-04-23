@@ -6,6 +6,7 @@ class Customer::CustomersController < ApplicationController
     end
 
     def edit
+        @customer =Customer.find(params[:id])
     end
 
     def update
