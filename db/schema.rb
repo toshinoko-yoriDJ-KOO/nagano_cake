@@ -125,6 +125,8 @@ ActiveRecord::Schema.define(version: 2023_04_21_173510) do
   create_table "orders", force: :cascade do |t|
     t.integer "total_payment", null: false
     t.integer "shopping_cost", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.string "postal_code", null: false
     t.integer "postal_code", null: false
     t.string "name", null: false
     t.string "address", null: false
@@ -139,7 +141,7 @@ ActiveRecord::Schema.define(version: 2023_04_21_173510) do
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "type", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
