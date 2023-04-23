@@ -1,4 +1,10 @@
 class Customer::DeliveryAddressesController < ApplicationController
+  # before_action :authenticate_customer!
+  
+  def new
+    @delivery_address = DeliveryAddress.new
+  end
+  
   def index
   end
 

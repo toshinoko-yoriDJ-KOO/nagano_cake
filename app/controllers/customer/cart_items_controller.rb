@@ -1,5 +1,9 @@
 class Customer::CartItemsController < ApplicationController
+  # before_action :authenticate_customer!
+
   def index
+     @cart_items = CartItem.all
+    # 本当はcurrent_customer.cart.items
   end
 
   def update
