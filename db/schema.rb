@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_21_173510) do
+ActiveRecord::Schema.define(version: 2023_04_22_074811) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,13 +53,11 @@ ActiveRecord::Schema.define(version: 2023_04_21_173510) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "product_amount", null: false
     t.integer "customer_id", null: false
     t.integer "product_id", null: false
+    t.integer "product_amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_cart_items_on_customer_id"
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -137,8 +135,6 @@ ActiveRecord::Schema.define(version: 2023_04_21_173510) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cart_items", "customers"
-  add_foreign_key "cart_items", "products"
   add_foreign_key "delivary_addresses", "customers"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
