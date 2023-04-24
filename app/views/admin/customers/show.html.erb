@@ -19,11 +19,11 @@
         </tr>
         <tr>
           <th>郵便番号</th>
-          <td><%= @customer.postcode %></td>
+          <td><%= @customer.zip_code %></td>
         </tr>
         <tr>
           <th>住所</th>
-          <td><%= @customer.residence %></td>
+          <td><%= @customer.address %></td>
         </tr>
         <tr>
           <th>電話番号</th>
@@ -35,7 +35,7 @@
         </tr>
         <tr>
           <th>会員ステータス</th>
-          <% if @customer.is_deleted == false %>
+          <% if @customer.is_active == true %>
             <td><p class="text-success">有効</p></td>
           <% elsif %>
             <td><p class="text-secondary">退会</p></td>
@@ -45,6 +45,6 @@
        <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-secondary"%></td>
        </tr>
        <tr>
-       <td><%= link_to "注文履歴一覧を見る", order_path(@customer.id), class: "btn btn-secondary"%></td>
+       <td><%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id), class: "btn btn-secondary"%></td>
     </div>
   </div>

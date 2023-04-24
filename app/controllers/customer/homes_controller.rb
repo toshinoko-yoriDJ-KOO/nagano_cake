@@ -4,7 +4,4 @@ class Customer::HomesController < ApplicationController
     @products = Product.all
   end
 
-  def about
-  end
-
 end

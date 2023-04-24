@@ -12,12 +12,13 @@ class Customer < ApplicationRecord
     validates :zip_code, presence: true
     validates :address, presence: true
     validates :phone_number, presence: true
-    validates :email, presence: true
-    validates :password, presence: true
-    validates :password_confirmation, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def is_deleted
+    !is_active
+  end
 end

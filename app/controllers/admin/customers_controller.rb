@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @customers = Customer.page(params[:page])
   end
@@ -14,14 +16,16 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      customer.update(customer_params)
+      flash[:notice] = "Customer was successfully updated"
       redirect_to admin_customer_path
+    else
+      render "show"
     end
   end
-  
+
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :residence, :phone_number, :is_deleted)
+    params.require(:customer).permit(:is_deleted, :last_name, :first_name, :first_name_kana, :last_name_kana, :zip_code, :address, :phone_number, :email, :is_active)
   end
 end
