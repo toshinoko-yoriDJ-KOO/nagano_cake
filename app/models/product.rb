@@ -8,11 +8,11 @@ def with_tax_price
     (price * 1.1).floor
 end
 
-def get_image
-  if image.attached?
-    image
-  else
-    'no_image.jpg'
+def get_image(width, height)
+  unless image.attached?
+    return nil
   end
+    image.variant(resize_to_limit: [width, height])
 end
+
 end

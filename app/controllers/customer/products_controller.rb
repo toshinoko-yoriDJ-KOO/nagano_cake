@@ -1,5 +1,5 @@
 class Customer::ProductsController < ApplicationController
-  # before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:index, :show]
   def index
     @products = Product.page(params[:page])
   end
@@ -8,10 +8,10 @@ class Customer::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart_item =CartItem
   end
-  
+
 private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :is_active, :amount)
+    params.require(:product).permit(:name, :description, :price, :is_active, :image)
   end
 end

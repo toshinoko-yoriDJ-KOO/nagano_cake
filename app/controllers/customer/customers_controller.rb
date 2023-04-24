@@ -1,5 +1,5 @@
 class Customer::CustomersController < ApplicationController
-    # before_action :authenticate_customer!
+    before_action :authenticate_customer!
 
     def show
         @customer = Customer.find(current_customer.id)
@@ -16,8 +16,11 @@ class Customer::CustomersController < ApplicationController
     end
 
     def out
+        current_customer.update(status: 'quit')
+        reset_session
+        redirect_to root_path
     end
-    
+
 private
 
     def customer_params
