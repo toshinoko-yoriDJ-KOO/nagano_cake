@@ -1,9 +1,11 @@
+<!--ごう作-->
+
 <%= form_with model: @delivery_address do |f| %>
   <div>郵便番号(ハイフンなし)</div>
-  <%= f.text_field :zip_code, placeholder: "000000", autocomplete: "zip_code" %>
+  <%= f.text_field :delivery_address_zip_code, placeholder: "000000" %>
   <div>住所</div>
-  <%= f.text_field :address, placeholder: "TOKYO", autocomplete: "address" %>
+  <%= f.text_field :delivery_address_other, placeholder: "TOKYO" %>
   <div>宛名</div>
-  <%= f.text_field :name, placeholder: "DJ KOO", autocomplete: "name" %>
+  <%= f.text_field :delivery_address_name, placeholder: "DJ KOO" %>
   <%= f.submit "新規登録", class: "btn btn-success" %>
 <% end %>

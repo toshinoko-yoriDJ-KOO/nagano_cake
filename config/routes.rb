@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     patch "/customers/information" => "customers#update"
     get "/customers/quit" => "customers#quit"
     patch "/customers/out" => "customers#out"
-    resources :delivery_addresses, only:[:index, :edit, :create, :update, :destroy]
+    resources :delivery_addresses, only:[:new, :index, :edit, :create, :update, :destroy]
     resources :orders, only:[:new, :create, :index, :show]
     resources :cart_items, only:[:index, :update, :destroy, :create]
     resources :products, only:[:index, :show]
