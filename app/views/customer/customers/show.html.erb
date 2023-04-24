@@ -3,7 +3,7 @@
   <div class="row">
     <h3>マイページ</h3>
     <h3>登録情報</h3>
-    <%= link_to "編集する",  edit_customer_path(@customer), class: 'btn btn-success' %>
+    <%= link_to "編集する", customers_information_edit_path(@customer), class: 'btn btn-success' %>
     <table class= table table-bordered >
       <thead class="thead-light">
         <tr>
@@ -16,7 +16,7 @@
         </tr>
         <tr>
           <th>郵便番号</th>
-            <td><%= @customer.postal_code %></td>
+            <td><%= @customer.zip_code %></td>
         </tr>
         <tr>
           <th>住所</th>
@@ -33,7 +33,7 @@
       </thead>
     </table>
     <h3>配送先</h3>
-    <%= link_to "一覧を見る", addresses_path, class: 'btn btn-primary' %>
+    <%= link_to "一覧を見る", delivery_addresses_path, class: 'btn btn-primary' %>
     <h3 >注文履歴</h3>
     <%= link_to "一覧を見る", orders_path, class: 'btn btn-primary' %>
 </div>
