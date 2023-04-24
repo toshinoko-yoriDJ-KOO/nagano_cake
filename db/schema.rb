@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2023_04_23_161953) do
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

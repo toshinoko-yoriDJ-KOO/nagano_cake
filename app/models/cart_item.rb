@@ -11,5 +11,12 @@ class CartItem < ApplicationRecord
   def subtotal
     product.with_tax_price * product_amount
   end
+  
+  def get_image(width, height)
+  unless image.attached?
+    return nil
+  end
+    image.variant(resize_to_limit: [width, height])
+  end
 
 end

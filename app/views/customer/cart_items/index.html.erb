@@ -26,8 +26,8 @@
           <td><%= cart_item.product.with_tax_price %></td>
           <!--商品の数量、セレクトボックス使用-->
               <%= form_with model: cart_item do |f| %>
-          <td><%= f.select :product_amount, [1,2,3] %></td>
-              <%= f.submit "更新", class: "btn btn-success" %>
+          <td><%= f.select :product_amount, (1..Float::INFINITY).to_a %></td>
+              <%= f.submit "変更", class: "btn btn-success" %>
               <% end %>
           <!--商品の小計→subtotal-->
           <td><%= cart_item.subtotal %></td>
@@ -35,7 +35,7 @@
         </tr>
       <% end %>
       <!--合計金額-->
-        <%= @total.round.to_s(:delimited) %>
+        <%= @total.to_s(:delimited) %>
   <% else %>
       <p>カートに追加された商品はありません</p>
     </table>
@@ -43,4 +43,6 @@
 <!--トップページへ-->
 <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
 <!--注文情報入力画面へ-->
+<% if @cart_items.present? %>
 <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+<% end %>

@@ -41,11 +41,11 @@
       <h2>新着商品</h2>
       <div class="row">
         <% if @products.present? %>
-          <% @products.each do |product| %>
+          <% @products.order(created_at: :desc).first(4).each do |product| %>
             <div class="col-md-3">
               <table>
                 <tr>
-                  <td><%= image_tag product.get_image(50,50) %></td>
+                  <td><%= image_tag product.get_image(200,200) %></td>
                 </tr>
                 <tr>
                   <td><%= product.name %></td>

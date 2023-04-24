@@ -21,4 +21,8 @@ class Customer::OrdersController < ApplicationController
 
   def show
   end
+
+  def order_params
+    params.require(:order).permit(:customer_id, :total_payment, :shopping_cost, :postal_code, :name, :address)
+  end
 end

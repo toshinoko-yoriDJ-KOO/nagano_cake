@@ -15,8 +15,11 @@ class Customer::CustomersController < ApplicationController
     end
 
     def out
+        current_customer.update(status: 'quit')
+        reset_session
+        redirect_to root_path
     end
-    
+
 private
 
     def customer_params

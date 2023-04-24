@@ -1,5 +1,5 @@
 class Customer::ProductsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:index, :show]
   def index
     @products = Product.all
   end
@@ -11,6 +11,6 @@ class Customer::ProductsController < ApplicationController
 private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price)
+    params.require(:product).permit(:name, :description, :price, :image)
   end
 end
