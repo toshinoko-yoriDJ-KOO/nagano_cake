@@ -23,4 +23,7 @@ class Customer < ApplicationRecord
     super && (is_active == true)
   end
 
+  def is_deleted
+    !is_active
+  end
 end
