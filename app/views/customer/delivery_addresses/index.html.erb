@@ -16,11 +16,11 @@
   <% @delivery_addresses.each do |delivery_address| %>
   <tr>
     <td><%= delivery_address.delivery_address_zip_code %></td>
-    <td><%= delivery_address.delivery_address_address %></td>
+    <td><%= delivery_address.delivery_address_other %></td>
     <td><%= delivery_address.delivery_address_name %></td>
     <td>
-      <%= link_to "編集する", edit_delivery_address_path, class: "btn btn-success" %>
-      <%= link_to "削除する", delivery_address_path, class: "btn btn-success", method: :delete, data: {confirm: "本当に削除しますか?"} %>
+      <%= link_to "編集する", edit_delivery_address_path(delivery_address), class: "btn btn-success" %>
+      <%= link_to "削除する", delivery_address_path(delivery_address), class: "btn btn-danger", method: :delete, data: {confirm: "本当に削除しますか?"} %>
     </td>
   </tr>
   <% end %>

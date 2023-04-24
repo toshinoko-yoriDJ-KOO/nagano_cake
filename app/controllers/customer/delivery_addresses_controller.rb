@@ -16,21 +16,24 @@ class Customer::DeliveryAddressesController < ApplicationController
 
   def create
     @delivery_address = DeliveryAddress.new(delivery_address_params)
+    @delivery_address.customer_id = current_customer.id
     if @delivery_address.save
       redirect_to request.referer
     else
-      @delivery_addresses = DeliveryAddress.all
       render :index
     end
   end
 
   def update
+    @delivery_address = DeliveryAddress.find(params[:id])
+    @delivery_address.update
+    redirect_to '/delivery_addresses'
   end
 
   def destroy
     @delivery_address = DeliveryAddress.find(params[:id])
     @delivery_address.destroy
-    redirect_to "/delivery_addresses"
+    redirect_to '/delivery_addresses'
   end
   
   
