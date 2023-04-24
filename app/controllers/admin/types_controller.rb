@@ -39,7 +39,7 @@ class Admin::TypesController < ApplicationController
       # ジャンル一覧(indexページ)にリダイレクト
       redirect_to admin_types_path
     else
-      # lseの場合、indexページを表示
+      # elseの場合、indexページを表示
       render 'edit'
     end
   end
