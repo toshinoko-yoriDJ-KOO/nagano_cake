@@ -1,7 +1,7 @@
 <div class="container my-5">
   <!--<strong>で協調して表示-->
   <h3><strong>ジャンル編集</strong></h3>
-
+  <!--form_with modelでtypeモデルのnameを指定(階層構造でパラメータに記述) create後はindexページに遷移-->
   <%= form_with model: @type,url:admin_type_path,method: :patch do |f| %>
   <table class="mt-4">
     <tbody>
@@ -13,6 +13,7 @@
           <%= f.text_field:name %>
         </td>
         <td>
+          <!--変更を保存は緑色のボタン-->
           <%= f.submit "変更を保存",class:"btn btn-success" %>
         </td>
       </tr>

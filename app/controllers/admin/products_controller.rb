@@ -4,7 +4,7 @@ class Admin::ProductsController < ApplicationController
 
   def index
     # ページネーションの設定
-    @products = Product.page(params[:page]).reverse_order
+    @products = Product.page(params[:page])
   end
 
   def new
@@ -35,6 +35,18 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def update
+    # テーブルからレコードを1行取得。引数はid
+    @product = Product.find(params[:id])
+    # アップデートに成功した時
+    if @product.update(product_params)
+      # 商品詳細(showページ)にリダイレクト
+      redirect_to admin_product_path(@product)
+    else
+      # elseの場合,editページを表示
+      render :edit
+    end
+  end
 
   private
 
