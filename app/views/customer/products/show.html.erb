@@ -29,7 +29,7 @@
       <h2><%= @product.name %></h2>
       <%= @product.description %><br>
       ¥<%= @product.with_tax_price %>（税込）
-      
+
       <% if @product.is_active == true %>
       <%= form_with model: CartItem.new, url: cart_items_path, method: :post do |f| %>
     <%= f.select :product_amount, [*1..5],{include_blank: '個数選択'}, {class: "w-150 d-inline form-control needs-validation", required: true} %>個
@@ -39,6 +39,6 @@
 <% end %>
     </div>
     </div>
-  
+
 </div>
 

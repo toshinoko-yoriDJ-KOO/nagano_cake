@@ -3,7 +3,7 @@
 
 <h3>注文情報入力</h3>
 
-<%= form_with model: @order,url: orders_confirm_path, method: :post do |f| %>
+<%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
   <div>
     <h6>支払い方法</h6>
     <%= f.radio_button :payment_method, "credit_card" %>
@@ -26,13 +26,13 @@
     <%= f.radio_button :address_select, "delivery_address_other" %>
     <%= f.label :address_select, "登録済住所から選択" %><br>
   <!--セレクトボックスですべての住所表示-->
-    <%= f.select :address_id, options_from_collection_for_select(Order.all, :id, :address_display) %><br>
+    <%= f.select :address_id, options_from_collection_for_select(@delivery_addresses.all, :id, :address_display) %><br>
   <!--新規配送先-->
     <%= f.radio_button :address_select, "new_delivery_address" %>
     <%= f.label :address_select, "新しいお届け先" %><br>
 　<!--新規配送先入力フォーム-->
     <div>郵便番号(ハイフンなし)</div>
-    <%= f.text_field :zip_code, placeholder: "000000" %>
+    <%= f.text_field :postal_code, placeholder: "000000" %>
     <div>住所</div>
     <%= f.text_field :address, placeholder: "TOKYO" %>
     <div>宛名</div>

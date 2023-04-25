@@ -2,11 +2,11 @@
 
 class Customer::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
 # ごう作
 # 新規登録が行われる前に
   before_action :customer_state, only: [:create]
-  
+
   protected
 # 退会しているかどうかを判断する
   def customer_state

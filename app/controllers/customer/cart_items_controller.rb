@@ -3,8 +3,9 @@ class Customer::CartItemsController < ApplicationController
 
   def index
      @cart_items = current_customer.cart_items.all
-  # カート内商品の合計金額を求める
-     @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.subtotal }
+     @products = Product.all
+  # 0に小計(subtotal)を足していく
+     @total = 0
   end
 
   def update
