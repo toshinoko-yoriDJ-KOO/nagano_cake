@@ -3,7 +3,11 @@
 
 <h3>注文情報入力</h3>
 
+<<<<<<< HEAD
 <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
+=======
+<%= form_with model: @order,url: orders_confirm_path, method: :post do |f| %>
+>>>>>>> origin/develop
   <div>
     <h6>支払い方法</h6>
     <%= f.radio_button :payment_method, "credit_card" %>
@@ -38,5 +42,8 @@
     <div>宛名</div>
     <%= f.text_field :name, placeholder: "DJ KOO" %>
   </div>
-  <%= f. submit "確認画面へ進む", class: "btn btn-primary" %>
+  <!--注文情報確認画面へ-->
+  <%= f.submit "確認画面へ進む", class: "btn btn-primary"%>
 <% end %>
+
+
