@@ -2,11 +2,11 @@
 
 class Customer::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
 # ごう作
 # 新規登録が行われる前に
   before_action :customer_state, only: [:create]
-  
+
   protected
 # 退会しているかどうかを判断する
   def customer_state
@@ -17,8 +17,6 @@ class Customer::SessionsController < Devise::SessionsController
   # 取得したアカウントのパスワードと入力されたパスワードが一致しているかどうか...ユーザー情報.valid_password?(入力されたパスワード)
     if @customer.valid_password?(params[:customer][:password]) && !(@customer.is_active == true)
       redirect_to new_customer_registration_path
-    else
-      redirect_to customer_session_path
     end
   end
 
