@@ -2,7 +2,6 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_products, dependent: :destroy
   has_many :items, through: :order_items
-  has_many :order_items, dependent: :destroy
 
 # バリデーション新規配送先フォームを選択時に適応
   validates :zip_code, presence: true, if: -> { address == 'new_delivery_address' }
