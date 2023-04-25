@@ -19,7 +19,7 @@
         <tr>
           <!--商品の画像、名前-->
           <td>
-            <%#= image_tag cart_item.get_image(30,30) %>
+            <%= image_tag cart_item.product.get_image(30,30) %>
             <%= cart_item.product.name %>
           </td>
           <!--商品の単価→with_tax_price-->
@@ -28,9 +28,11 @@
               <%= form_with model: cart_item do |f| %>
           <td><%= f.select :product_amount, (1..5).to_a %></td>
               <%= f.submit "変更", class: "btn btn-success" %>
+          </td>
               <% end %>
           <!--商品の小計→subtotal-->
           <td><%= cart_item.subtotal %></td>
+              <% @total += cart_item.subtotal %>
           <td><%= link_to "削除する", cart_item_path(cart_item), class:"btn-sm btn-danger", method: :delete, data: {confirm: "本当に削除しますか?"} %></td>
         </tr>
       <% end %>

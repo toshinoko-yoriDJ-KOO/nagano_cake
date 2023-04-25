@@ -38,8 +38,9 @@
           <p>¥<%= product.price %></p>
           </div>
               <% end %>
+        </div>
+        <%= paginate @products %>
       </div>
-      <%= paginate @products %>
     </div>
   </div>
 </div>
