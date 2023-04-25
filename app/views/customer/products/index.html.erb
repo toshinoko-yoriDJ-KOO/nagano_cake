@@ -38,18 +38,8 @@
           <p>¥<%= product.price %></p>
           </div>
               <% end %>
+        </div>
+        <%= paginate @products %>
       </div>
-      <%= paginate @products %>
     </div>
-<div class='col-md-8 offset-md-1'>
-<h3>商品一覧</h3>
-<% @products.each do |product| %>
-  <%= link_to products_path(product.id) do %>
-    <%= image_tag product.get_image(50,50) %>
-    <%= product.name %>
-    ¥<%= product.price %>
-  <% end %>
-<% end %>
-</div>
   </div>
-</div>

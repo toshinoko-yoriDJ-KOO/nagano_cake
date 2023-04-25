@@ -11,11 +11,11 @@
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td>
-              <%= image_tag %>
-              <%= cart_items.products.name %>
+              <%#= image_tag %>
+              <%= cart_item.product.name %>
             </td>
-            <td><%= cart_item.products.with_tax_price %>円</td>
-            <td><%= cart_item.amount %>個</td>
+            <td><%= cart_item.product.with_tax_price %>円</td>
+            <td><%= cart_item.product_amount %>個</td>
             <td><%= cart_item.subtotal %>円</td>
           </tr>
           <% @total+=cart_item.subtotal %>
@@ -27,11 +27,11 @@
     <table class='table table-bordered'>
       <thead class="thead-light">
         <th>送料</th>
-          <td><%= @order.shipping_cost.to_s %></td>
+          <td><%= @order.shopping_cost.to_s %></td>
             <th>商品合計</th>
           <td><%= @total %></td>
             <th>請求金額</th>
-          <td><%= @order.shipping_cost + @total %></td>
+          <td><%= @order.shopping_cost + @total %></td>
       </thead>
     </table>
   </div>
@@ -39,17 +39,18 @@
     <h5>支払い方法</h5>
     <%= @order.payment_method %>
     <h5>お届け先</h5>
-    〒<%= @order.address %>
+    〒<%= @order.postal_code %>
+    <%= @order.address %>
      <%= @order.name %>
-     
+
     <%= form_with model:@order ,url:orders_path, method: :post do |f| %>
       <%= f.hidden_field :postal_code %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :name %>
-      <%= f.hidden_field :shipping_cost %>
-      <%= f.hidden_field :@total %>
-      <%= f.hidden_field :peyment_method %>
-      <%= f.submit "注文を確定する", class:btn btn-success %>
+      <%= f.hidden_field :shopping_cost %>
+      <%= f.hidden_field :total_payment, value: @total %>
+      <%= f.hidden_field :payment_method %>
+      <%= f.submit "注文を確定する", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
