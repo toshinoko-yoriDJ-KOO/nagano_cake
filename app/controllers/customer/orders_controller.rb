@@ -2,6 +2,7 @@ class Customer::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
     @order = Order.new
+    @delivery_addresses = current_customer.delivery_addresses.all
   end
 
   def confirm
@@ -10,9 +11,14 @@ class Customer::OrdersController < ApplicationController
     @order.shopping_cost = 800
     @total = 0
     if params[:order][:address_select] == "customer_address"
-    @order.address = current_customer.address
-    @order.postal_code = current_customer.zip_code
-    @order.name = current_customer.last_name+" "+current_customer.first_name
+      @order.postal_code = current_customer.zip_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:address_select] == "delivery_address_other"
+      address = DeliveryAddress.find(params[:order][:address_id])
+      @order.postal_code = address.delivery_address_zip_code
+      @order.address = address.delivery_address_other
+      @order.name = address.delivery_address_name
     end
   end
 
@@ -34,7 +40,6 @@ class Customer::OrdersController < ApplicationController
     cart_item.destroy
   end
   redirect_to orders_thanks_path
-    
   end
 
   def index
@@ -44,14 +49,10 @@ class Customer::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-  
-  private
-  
-  def order_params
-    params.require(:order).permit(:total_payment, :shopping_cost, :payment_method, :name, :address, :postal_code, :status)
-  end
 
-  # def order_params
-  #   params.require(:order).permit(:customer_id, :total_payment, :shopping_cost, :postal_code, :name, :address)
-  # end
+  private
+
+  def order_params
+    params.require(:order).permit(:customer_id, :total_payment, :shopping_cost, :payment_method, :name, :address, :postal_code, :status)
+  end
 end
