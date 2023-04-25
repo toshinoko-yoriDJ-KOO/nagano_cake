@@ -5,10 +5,15 @@ class Customer::OrdersController < ApplicationController
   end
 
   def confirm
+    @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
-    @order.shipping_cost = 800
+    @order.shopping_cost = 800
     @total = 0
+    if params[:order][:address_select] == "customer_address"
+    @order.address = current_customer.address
+    end
   end
+  
 
   def thanks
   end
@@ -30,7 +35,4 @@ class Customer::OrdersController < ApplicationController
     params.require(:order).permit(:total_payment, :shipping_cost, :payment_method, :name, :address, :postal_code, :status)
   end
 
-  def order_params
-    params.require(:order).permit(:customer_id, :total_payment, :shopping_cost, :postal_code, :name, :address)
-  end
 end
