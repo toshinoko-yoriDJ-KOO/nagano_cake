@@ -29,9 +29,9 @@
           <% @products.each do |product| %>
           <div class="col-md-3">
          <%= link_to product_path(product.id) do %>
-            
+
               <p><%= image_tag product.get_image(200,200) %></p>
-            
+
             <% end %>
            <p><%= product.name %></p>
           <p>¥<%= product.price %></p>
@@ -42,5 +42,9 @@
         <%= paginate @products %>
       </div>
     </div>
+<<<<<<< HEAD
   </div>
 </div>
+=======
+  </div>
+>>>>>>> origin/develop
