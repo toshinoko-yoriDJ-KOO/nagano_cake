@@ -1,8 +1,10 @@
 <!--kuma-->
 <div class="container">
-  <div class=row>
-    <h3>会員情報編集</h3>
+  <div class="row my-5 justify-content-center">
+    <div class="col-md-9">
+      <h3>会員情報編集</h3>
       <%= form_with model: @customer, url: customers_information_path(current_customer), method: :patch do |f| %>
+      
       <table>
         <tr>
           <td>名前</td>
@@ -22,7 +24,7 @@
         </tr>
         <tr>
           <td>住所</td>
-          <td><%= f.text_field :address %></td>
+          <td><%= f.text_field :address, :size=>"30"%></td>
         </tr>
         <tr>
           <td>電話番号</td>
@@ -34,9 +36,11 @@
         </tr>
         <tr>
           <td><%= f.submit "編集内容を保存", class: 'btn btn-success' %></td>
-          <td><%= link_to "退会する", customers_quit_path, class: 'btn btn-primary' %></td>
+          <td><div></div></td>
+          <td><%= link_to "退会する", customers_quit_path, class: 'btn btn-danger' %></td>
         </tr>
       </table>
       <% end %>
+      </div>
   </div>
 </div>
