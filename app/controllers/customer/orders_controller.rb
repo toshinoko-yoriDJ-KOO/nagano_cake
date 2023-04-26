@@ -21,6 +21,7 @@ class Customer::OrdersController < ApplicationController
     end
   end
 
+
   def thanks
   end
 
@@ -39,6 +40,7 @@ class Customer::OrdersController < ApplicationController
     cart_item.destroy
   end
   redirect_to orders_thanks_path
+
   end
 
   def index
