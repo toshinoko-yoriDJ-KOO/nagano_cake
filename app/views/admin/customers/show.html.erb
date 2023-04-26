@@ -1,8 +1,8 @@
 <!--batako-->
 <div class="container mt-5 mb-5">
-  <div class="text-center"></div>
    <div class="row">
-    <h3 class="mb-4"><strong><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</strong></h3>
+    <div class="mb-4">
+    <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
     <table class="table table-borderless">
       <tbody>
         <tr>
@@ -46,5 +46,7 @@
        </tr>
        <tr>
        <td><%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id), class: "btn btn-secondary"%></td>
+      </table>
     </div>
   </div>
+</div>
