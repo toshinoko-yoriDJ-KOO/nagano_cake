@@ -1,5 +1,5 @@
-<div class='container'>
-  <div class='row'>
+  <div class='container'>
+   <div class='row'>
     <div class='col-md-2'>
       <table class="table table-bordered">
         <thead>
@@ -23,7 +23,7 @@
     </div>
     <div class='row'>
     <div class="col-8">
-      <%#= image_tag @product.get_image(300,300) %>
+      <%= image_tag @product.get_image(300,300) %>
     </div>
     <div class="col-3">
       <h2><%= @product.name %></h2>
@@ -35,8 +35,8 @@
     <%= f.select :product_amount, [*1..5],{include_blank: '個数選択'}, {class: "w-150 d-inline form-control needs-validation", required: true} %>個
     <%= f.hidden_field :product_id, :value => @product.id %>
     <%= f.submit "カートに入れる", class: "ml-2 btn btn-success"%>
-<% end %>
-<% end %>
+    <% end %>
+    <% end %>
     </div>
     </div>
 
