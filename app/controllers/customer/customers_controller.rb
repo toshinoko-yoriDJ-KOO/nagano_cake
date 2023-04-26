@@ -10,6 +10,7 @@ class Customer::CustomersController < ApplicationController
     end
 
     def update
+        
     end
 
     def quit
