@@ -53,12 +53,12 @@
       <%= f.hidden_field :address %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :shopping_cost %>
-      <%= f.hidden_field :total_payment, value: @total %>
+      <%= f.hidden_field :total_payment, value: @total+@order.shopping_cost %>
       <%= f.hidden_field :payment_method %>
   <div class='row'>
       <%= f.submit "注文を確定する", class:'btn btn-success' %>
       <% end %>
   </div>
-    
+
   </div>
 
