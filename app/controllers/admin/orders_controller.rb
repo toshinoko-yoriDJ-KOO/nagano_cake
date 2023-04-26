@@ -14,14 +14,13 @@ class Admin::OrdersController < ApplicationController
 
   def update
   @order = Order.find(params[:id])
-  @order_product = OrderProduct.where(order_id: @order.id).first
+  @order_products = OrderProduct.where(order_id: @order.id)
   @order.update(order_params)
 
-  if @order_product.production_status == OrderProduct.production_statuses.key(1)
-    @order_items = OrderItem.where(params[:order_id])
-    @order_items.each do |order_item|
-      order_item.production_status = OrderItem.production_statuses.key(1)
-      order_item.save
+  if @order.status == Order.statuses.key(1)
+    @order_products.each do |order_product|
+      order_product.making_status = OrderProduct.making_statuses.key(1)
+      order_product.save
     end
   end
 

@@ -4,12 +4,6 @@ ja:
       default: '%Y/%m/%d %H:%M:%S'
   enums:
     order:
-      status: 
-        waiting: "支払い待ち"
-        confirm: "支払い確認"
-        making: "製作中"
-        preparation: "発送準備中"
-        sent: "発送済み"
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
@@ -21,7 +15,7 @@ ja:
          sent: "発送済み"
     order_product:
       making_status:
-        waiting: "制作待ち"
-        producing: "制作中"
-        completed: "制作完了"
-        cancelled: "制作キャンセル"
+        waiting: "着手不可"
+        producing: "制作待ち"
+        completed: "制作中"
+        cancelled: "制作完了"

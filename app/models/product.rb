@@ -4,6 +4,8 @@ class Product < ApplicationRecord
  has_many :cart_items, dependent: :destroy
  belongs_to :type
 
+ enum status: { waiting:0, confirm:1, making:2, preparation:3, sent:4 }
+
 def with_tax_price
     (price * 1.1).floor
 end
