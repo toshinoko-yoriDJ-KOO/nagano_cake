@@ -10,5 +10,5 @@ class DeliveryAddress < ApplicationRecord
 # ごう作：注文情報入力画面の登録済住所のセレクトボックスへ適応
   def address_display
   '〒' + delivery_address_zip_code + ' ' + delivery_address_other + ' ' + delivery_address_name
-end
+  end
 end

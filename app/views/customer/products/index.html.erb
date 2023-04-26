@@ -28,17 +28,14 @@
           <% @products.each do |product| %>
           <div class="col-md-3">
          <%= link_to product_path(product.id) do %>
-            <% if product.image.attached? %>
-              <p><%= image_tag product.image, size: "100x100" %></p>
-            <% else %>
-              <p><%= image_tag 'no_image', size: "100x100" %></p>
-            <% end %>
-            <% end %>
+              <p><%= image_tag product.get_image(100,100) %></p>
            <p><%= product.name %></p>
           <p>¥<%= product.price %></p>
           </div>
               <% end %>
+            <% end %>
         </div>
+
         <%= paginate @products %>
       </div>
     </div>

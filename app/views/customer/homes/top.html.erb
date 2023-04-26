@@ -3,7 +3,7 @@
 <!--ジャンル検索は実装しなくてもよいらしい-->
 <div class="container">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 mt-2">
       <table class="table table-bordered">
         <thead>
           <th class="table-dark">ジャンル検索</th>
@@ -38,29 +38,35 @@
         購入には会員登録が必要になります。<br>
       </p>
 
-      <h2>新着商品</h2>
+      <h2 class="new">新着商品</h2>
       <div class="row">
         <% if @products.present? %>
           <% @products.order(created_at: :desc).first(4).each do |product| %>
             <div class="col-md-3">
               <table>
                 <tr>
-                  <td><%#= image_tag product.get_image(200,200) %></td>
+                  <td class="img-thumbnail border-info "><%= image_tag product.get_image(200,200) %></td>
                 </tr>
                 <tr>
                   <td><%= product.name %></td>
                 </tr>
                 <tr>
-                  <td><%= product.price %></td>
+                  <td>￥<%= product.price %></td>
                 </tr>
               </table>
             </div>
           <% end %>
         <% else %>
-          <p>商品がありません</p>
+        <div class="ml-5 mt-3 mb-3">
+          <h5>商品がありません</h5>
+        </div>
         <% end %>
       </div>
-      <%= link_to "すべての商品を見る＞",  products_path %>
+      <% if @products.present? %>
+        <h5 class="text-info">
+          <%= link_to "すべての商品を見る＞",  products_path %>
+        </h5>
+      <% end %>
     </div>
   </div>
 </div>

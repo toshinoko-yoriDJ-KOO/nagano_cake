@@ -12,11 +12,14 @@ class CartItem < ApplicationRecord
     product.with_tax_price * product_amount
   end
   
-  def get_image(width, height)
+
+
+def get_image(width, height)
   unless image.attached?
-    return nil
+    file_path = Rails.root.join('app/assets/images/no-image.jpg')
+    image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
   end
-    image.variant(resize_to_limit: [width, height])
-  end
+    image.variant(resize_to_limit: [width, height]).processed
+end
 
 end
