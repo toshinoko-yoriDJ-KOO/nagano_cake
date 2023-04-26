@@ -38,7 +38,7 @@ class Customer::OrdersController < ApplicationController
         making_status: 0)
     order_product.save
     cart_item.destroy
-  end
+    end
   redirect_to orders_thanks_path
 
   end
@@ -48,10 +48,12 @@ class Customer::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_customer.orders.find(params[:id])
+    
+    @total = 0
   end
 
-  private
+private
 
   def order_params
     params.require(:order).permit(:customer_id, :total_payment, :shopping_cost, :payment_method, :name, :address, :postal_code, :status, :image)
