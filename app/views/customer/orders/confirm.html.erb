@@ -7,7 +7,7 @@
     <div class=col-8>
     <table class='table table-bordered'>
       <thead class="thead-light">
-        <tr><th>商品名</th><th>単価（税込）</th><th>数量</th><th>小計</th><th></th></tr>
+        <tr><th>商品名</th><th>単価（税込）</th><th>数量</th><th>小計</th></tr>
       </thead>
       <tbody>
         <% @cart_items.each do |cart_item| %>
@@ -53,7 +53,7 @@
       <%= f.hidden_field :address %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :shopping_cost %>
-      <%= f.hidden_field :total_payment, value: @total %>
+      <%= f.hidden_field :total_payment, value: @total+@order.shopping_cost %>
       <%= f.hidden_field :payment_method %>
   <div class='row'>
       <%= f.submit "注文を確定する", class:'btn btn-success' %>
