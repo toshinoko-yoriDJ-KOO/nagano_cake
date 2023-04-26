@@ -1,6 +1,8 @@
+<<<<<<< HEAD
 <!--kuma-->
 <div class='container'>
   <div class='row my-5'>
+
     <div class='col-md-2'>
       <table class="table table-bordered">
         <thead>
@@ -22,7 +24,12 @@
         </tbody>
       </table>
     </div>
+<<<<<<< HEAD
     <div class="col-5">
+=======
+    <div class='row'>
+    <div class="col-8">
+>>>>>>> origin/develop
       <%= image_tag @product.get_image(300,300) %>
     </div>
     <div class="col-5">
@@ -30,6 +37,7 @@
       <%= @product.description %><br>
       <br>
       ¥<%= @product.with_tax_price %>（税込）
+<<<<<<< HEAD
       <br>
       <br>
       <div class='row'>
@@ -45,6 +53,16 @@
             <% end %>
           <% end %>
         </div>
+=======
+
+      <% if @product.is_active == true %>
+      <%= form_with model: CartItem.new, url: cart_items_path, method: :post do |f| %>
+    <%= f.select :product_amount, [*1..5],{include_blank: '個数選択'}, {class: "w-150 d-inline form-control needs-validation", required: true} %>個
+    <%= f.hidden_field :product_id, :value => @product.id %>
+    <%= f.submit "カートに入れる", class: "ml-2 btn btn-success"%>
+    <% end %>
+    <% end %>
+>>>>>>> origin/develop
     </div>
     </div>
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
     resources :types, only:[:index, :create, :edit, :update]
     resources :orders, only:[:show, :update]
+    resources :order_products, only:[:update]
   end
 
   scope module: :customer do
