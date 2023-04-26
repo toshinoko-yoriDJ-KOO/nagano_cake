@@ -16,7 +16,8 @@ class Customer::CustomersController < ApplicationController
     end
 
     def out
-        current_customer.update(status: 'quit')
+        @customer = current_customer
+        @customer.update(is_active: false)
         reset_session
         redirect_to root_path
     end

@@ -9,10 +9,10 @@ class Customer::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
   end
-  
+
 private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :is_active, :amount)
+    params.require(:product).permit(:name, :description, :price, :is_active, :amount, :image)
   end
 end
