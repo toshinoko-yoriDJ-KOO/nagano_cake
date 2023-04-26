@@ -10,6 +10,12 @@ class Customer::CustomersController < ApplicationController
     end
 
     def update
+        @customer = Customer.find(current_customer.id)
+     if @customer.update(customer_params)
+        redirect_to '/customers/my_page'
+    else
+        render :edit
+    end
     end
 
     def quit
