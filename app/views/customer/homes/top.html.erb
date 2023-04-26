@@ -45,7 +45,11 @@
             <div class="col-md-3">
               <table>
                 <tr>
-                  <td class="img-thumbnail border-info "><%= image_tag product.get_image(200,200) %></td>
+                  <td class="img-thumbnail border-info ">
+                    <%= link_to products_path(product.id) do %>
+                    <%= image_tag product.get_image(200,200) %>
+                    <% end %>
+                  </td>
                 </tr>
                 <tr>
                   <td><%= product.name %></td>

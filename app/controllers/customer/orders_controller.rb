@@ -15,9 +15,14 @@ class Customer::OrdersController < ApplicationController
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_select] == "delivery_address_other"
       address = DeliveryAddress.find_by(params[:order][:address_id])
-      @order.postal_code = address.delivery_address_zip_code
-      @order.address = address.delivery_address_other
-      @order.name = address.delivery_address_name
+      if address.present?
+        @order.postal_code = address.delivery_address_zip_code
+        @order.address = address.delivery_address_other
+        @order.name = address.delivery_address_name
+      else
+        flash[:notice] = "配送先が入力されていません"
+        redirect_to request.referer
+      end
     end
   end
 
@@ -49,7 +54,7 @@ class Customer::OrdersController < ApplicationController
 
   def show
     @order = current_customer.orders.find(params[:id])
-    
+
     @total = 0
   end
 
