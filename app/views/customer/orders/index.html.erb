@@ -16,7 +16,7 @@
           <% @order.each do |order| %>
             <tr>
               <td>
-                <%= order.create_at %>
+                <%= order.created_at %>
               </td>
               <td>
                 <%= order.postal_code %>
@@ -24,7 +24,7 @@
                 <%= order.name%>
               </td>
               <td>
-                <%= cart_item.product.name %>
+                <%= order.order_products.name %>
               </td>
               <td>
                 <%= order.total_payment %>

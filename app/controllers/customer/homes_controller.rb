@@ -7,5 +7,8 @@ class Customer::HomesController < ApplicationController
   def about
   end
 
+  def product_params
+    params.require(:home).permit(:image)
+  end
 
 end

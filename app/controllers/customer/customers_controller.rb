@@ -23,7 +23,7 @@ class Customer::CustomersController < ApplicationController
     end
 
     def out
-        @customer = Customer.find(params[:id])
+        @customer = current_customer
         @customer.update(is_active: false)
         reset_session
         redirect_to root_path
