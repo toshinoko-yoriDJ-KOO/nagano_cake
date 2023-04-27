@@ -1,0 +1,31 @@
+/*ごう作*/
+
+.bg-about {
+  background-image: url('/assets/本.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 300px;
+}
+
+.about-content {
+  margin-top: -230px;
+  margin-left: -150px;
+}
+
+.about-title {
+  color: #814721;
+  font-family: serif;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 0 #000,
+               1px 1px 0 #000,
+               1px 1px 0 #000,
+               1px 1px 0 #000;
+}
+
+.about-text {
+  color: #fdeff2;
+  font-family: serif;
+  margin-top: -20px;
+}
+

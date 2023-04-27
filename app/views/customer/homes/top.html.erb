@@ -1,0 +1,76 @@
+<!--ごう作-->
+
+<!--ジャンル検索は実装しなくてもよいらしい-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 mt-2">
+      <table class="table table-bordered">
+        <thead>
+          <th class="table-dark">ジャンル検索</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ケーキ</td>
+            </tr>
+          <tr>
+            <td class="table-danger">焼き菓子</td>
+          </tr>
+          <tr>
+            <td>プリン</td>
+          </tr>
+          <tr>
+            <td class="table-danger">キャンディ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <!--背景画像-->
+    <head>
+      <link rel="stylesheet" href="/assets/customer/homes/top.css">
+    </head>
+
+    <div class="col-md-10">
+      <p class="bg-top">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。<br>
+      </p>
+
+      <h2 class="new">新着商品</h2>
+      <div class="row">
+        <% if @products.present? %>
+          <% @products.order(created_at: :desc).first(4).each do |product| %>
+            <div class="col-md-3">
+              <table>
+                <tr>
+                  <td class="img-thumbnail border-info ">
+                    <%= link_to product_path(product.id) do %>
+                    <%= image_tag product.get_image(200,200) %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td><%= product.name %></td>
+                </tr>
+                <tr>
+                  <td>￥<%= product.price %></td>
+                </tr>
+              </table>
+            </div>
+          <% end %>
+        <% else %>
+        <div class="ml-5 mt-3 mb-3">
+          <h5>商品がありません</h5>
+        </div>
+        <% end %>
+      </div>
+      <% if @products.present? %>
+        <h5 class="text-info">
+          <%= link_to "すべての商品を見る＞",  products_path %>
+        </h5>
+      <% end %>
+    </div>
+  </div>
+</div>

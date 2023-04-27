@@ -6,11 +6,33 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <style>
+     /*しんちゃん作成*/
+     /*CSS rules to specify familiesの箇所をコピペして<style>タグで囲む。{}で囲み*/
+     /*ヘッダーに反映させたいので<head>タグ内にheader{コピペ内容}でOK*/
+     header{font-family: 'Noto Serif JP', serif;}
+   </style>
   </head>
 
-  <body>
+  <body style="background-color:#fdeff2;">
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+
+   <main>
     <%= yield %>
+   </main>
+
+    <footer>
+      <style>
+       /*しんちゃん作成*/
+       /*CSS rules to specify familiesの箇所をコピペして<style>タグで囲む。{}で囲み*/
+       /*ヘッダーに反映させたいので<footer>タグ内にfooter{コピペ内容}でOK*/
+        footer{font-family: 'Noto Serif JP', serif;}
+      </style>
+       <%= render 'layouts/hooter' %>
+    </footer>
   </body>
 </html>
