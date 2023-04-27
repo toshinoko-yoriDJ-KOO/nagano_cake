@@ -48,12 +48,12 @@ class Customer::OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @order = current_customer.orders
+    
   end
 
   def show
-    @order = current_customer.orders.find(params[:id])
-
+    @order = Order.find(params[:id])
     @total = 0
   end
 
