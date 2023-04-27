@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-md-6 mx-auto">
-      <%= form_with model: @product,url: admin_products_path do |f| %>
+      <%= form_with model: @product, url: admin_products_path, method: :post do |f| %>
       <table class="table table-borderless mt-3">
         <tbody>
           <tr>

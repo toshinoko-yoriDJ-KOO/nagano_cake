@@ -3,8 +3,8 @@
     <div class="container">
       <div>
         <!--しんちゃん修正-->
-        <!--image_tagで画像を表示、root_pathでtopページで遷移-->
-        <%= link_to image_tag('logo.jpg', width: '40%', height: '40%'), root_path, class:"ml-5" %></br>
+        <!--image_tagで画像を表示、root_pathで管理者ログインページで遷移-->
+        <%= link_to image_tag('logo.jpg', width: '40%', height: '40%'), new_admin_session_path, class:"ml-5" %></br>
         <span class="text-center ml-5">Nagano_cake</span>
       </div>
      <!--customerがサイン済みかどうか判定する-->

@@ -18,7 +18,7 @@ class Admin::ProductsController < ApplicationController
     # セーブに成功した時
     if @product.save
       # 商品詳細(showページ)にリダイレクト
-      redirect_to admin_products_path(@product)
+      redirect_to admin_product_path(@product)
     else
       # elseの場合,newページを表示
       render :new
