@@ -7,6 +7,11 @@ class Customer::SessionsController < Devise::SessionsController
 # 新規登録が行われる前に
   before_action :customer_state, only: [:create]
 
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   protected
 # 退会しているかどうかを判断する
   def customer_state
