@@ -30,12 +30,22 @@ class Customer::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer.id
-    if @cart_item.save
-      redirect_to cart_items_path
+    existing_cart_item = current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id])
+    if existing_cart_item
+      existing_cart_item.product_amount += params[:cart_item][:product_amount].to_i
+      if existing_cart_item.save
+        redirect_to cart_items_path
+      else
+        render :index
+      end
     else
-      render :index
+      @cart_item = CartItem.new(cart_item_params)
+      @cart_item.customer_id = current_customer.id
+      if @cart_item.save
+        redirect_to cart_items_path
+      else
+        render :index
+      end
     end
   end
 

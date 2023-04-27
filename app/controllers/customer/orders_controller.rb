@@ -20,7 +20,6 @@ class Customer::OrdersController < ApplicationController
         @order.address = address.delivery_address_other
         @order.name = address.delivery_address_name
       else
-        flash[:notice] = "配送先が入力されていません"
         redirect_to request.referer
       end
     end
