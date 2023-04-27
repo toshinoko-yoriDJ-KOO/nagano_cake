@@ -31,7 +31,7 @@
              <!--税抜価格-->
              <td><%= product.price %></td>
              <!--ジャンル-->
-             <td><%= product.name %></td>
+             <td><%= product.type.name %></td>
              <!--p.statusの返り値が真だったら販売中,偽だったら販売停止中-->
              <% if product.is_active == true %>
              <td><strong class="text-success">販売中</strong></td>
